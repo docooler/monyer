@@ -1,0 +1,34 @@
+1.第八关的地址是：http://monyer.com/game/game1/eighteen8.php
+
+2.下载并查看源码：
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>第8关</title>
+</head>
+<body>
+    <h1>Not Found</h1>
+    <p>The requested URL /eighteen8.php was not found on this server.</p>
+    <p>Additionally, a 404 Not Found
+        error was encountered while trying to use an ErrorDocument to handle the request.</p>
+    <p><!--
+    第8关
+
+    朋友您好，第8关欢迎您！
+    我对您的聪明才智感到惊讶！
+    相信我，现在世界上85%以上的人都在你之下，
+    所以你可以大步向前，义无反顾地进行你的事业了。
+    因为只要你肯努力，不畏惧挫折，这个世界上没有难倒你的事。
+
+
+    那么继续我们的约定，我将告诉你第9关的入口：
+
+    10000以内所有质数和.php
+
+    -->
+    </p>
+</body>
+</html>
+看来已经有人游戏设计者还是比较有意思的同学。准备写个python来计算吧。
