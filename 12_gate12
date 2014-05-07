@@ -1,0 +1,87 @@
+1.第12关的入口地址是：http://monyer.com/game/game1/smartboy.php
+
+2.下载源码：
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>梦之光芒/Monyer——Monyer's Game(第12关)</title>
+</head>
+<body>
+<div align="center">
+    <p>欢迎您来到第12关</p>
+    <form action="?" method="post">
+        <input type="text" name="pwd" value="">
+        <input type="submit" value="提交">
+    </form>
+    <p>请进入第13关：<textarea>JTRBJTU0JTYzJTdBJTRBJTU0JTVBJTQ3JTRBJTU0JTU5JTc5JTRBJTU0JTU5JTMxJTRBJTU0JTU5JTc4JTRBJTU0JTYzJTMxJTRBJTU0JTYzJTMwJTRBJTU0JTU5JTM1JTRBJTU0JTU5JTMyJTRBJTU0JTYzJTMxJTRBJTU0JTVBJTQ0JTRBJTU0JTRBJTQ2JTRBJTU0JTYzJTc3JTRBJTU0JTU5JTM0JTRBJTU0JTYzJTc3</textarea></p>
+    </div>
+</body>
+</html>
+
+3.分析：
+这个密码是通过表单提交的，也就是说要分析这些数据来得出密码。
+把这些数据整理可以得：
+JTRB
+JTU0
+JTYz
+JTdB
+JTRB
+JTU0
+JTVB
+JTQ3
+JTRB
+JTU0
+JTU5
+JTc5
+JTRB
+JTU0
+JTU5
+JTMx
+JTRB
+JTU0
+JTU5
+JTc4
+JTRB
+JTU0
+JTYz
+JTMx
+JTRB
+JTU0
+JTYz
+JTMw
+JTRB
+JTU0
+JTU5
+JTM1
+JTRB
+JTU0
+JTU5
+JTMy
+JTRB
+JTU0
+JTYz
+JTMx
+JTRB
+JTU0
+JTVB
+JTQ0
+JTRB
+JTU0
+JTRB
+JTQ2
+JTRB
+JTU0
+JTYz
+JTc3
+JTRB
+JTU0
+JTU5
+JTM0
+JTRB
+JTU0
+JTYz
+JTc3
+很有规律的样子.把上面的字符串提取出来都提交一遍都不成功。
+提交脚本：
