@@ -1,0 +1,10 @@
+1.第11关的入口地址是：http://monyer.com/game/game1/doyouknow.php
+
+2.浏览器输入地址后变成：http://monyer.com/game/game1/doyouknow.php?action=show_login_false
+
+3.这个貌似没有什么吧。尝试把false修改为true试试看。
+http://monyer.com/game/game1/doyouknow.php?action=show_login_true
+
+显示如下：您的session为passer，所以您可以查看下一关密码：smartboy
+这个也太简单了吧！！！！
+下一关入口smartboy.php
