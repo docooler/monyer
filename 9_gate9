@@ -1,3 +1,44 @@
 1.第9关的入口地址是：http://monyer.com/game/game1/5736396.php
 
-2.
+2.下载源码：
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>梦之光芒/Monyer——Monyer's Game(第9关)</title>
+<script type="text/javascript">
+    function check(){
+        window.location.href = document.getElementById("txt").value + ".php";
+    }
+</script>
+</head>
+<body>
+<div align="center">
+    <p>欢迎您来到第9关</p>
+    <p>请输入密码进入第10关：
+        <input type="text" id="txt" value="">
+        <input type="button" onClick="check()" value="提交">
+    </p>
+    <p>好吧，在做完刚才的编程题后，您已经成功地来到第九关了，恭喜恭喜！什么？你用笔算出来的？I 服了 YOU！</p>
+    <p>累了这么长时间，Monyer不会忘记给你送个MM消遣一下，当然第十关密码也在图片里，你得往美女肉里面看，看仔细哦！</p>
+    <p><img alt="beauty" src="img/4681851790659554.jpg" /></p>
+                                           
+</div>
+</body>
+</html>
+
+3.看来源码里面是没有什么好分析的啦。只能老老实实看图，可是你妹呀。我现在在办公室，你让我盯着个美女图片苦思冥想，
+被同事看到我纠结的样子怎么看我呀。看似偷偷看看吧！图片上的数字都试过了没有找到。
+
+那就看看图片的源码吧。一直拉拉拉到最后有如下文字：
+那句广告词叫什么来着？
+对，“在这里，在这里，在这里......”
+恭喜你！
+第十关密码为：MonyerLikeYou_the10level
+从现在开始涉及到少许的动态东西，但你都可以按提示线索完成的！
+相信自己，没错的！
+
+突然觉得设计题目的同学好无聊。还是先试试看密码对不对。
+MonyerLikeYou_the10level.php
+让我们到下关吧。
