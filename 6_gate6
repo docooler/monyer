@@ -1,0 +1,54 @@
+1.第六关的入口是http://monyer.com/game/game1/asdf.php
+
+2.获取源码：
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>梦之光芒/Monyer——Monyer's Game(第6关)</title>
+<script type="text/javascript">
+  function check(){
+	  	window.location.href=document.getElementById('txt').value + "7.php";
+	}
+</script>
+</head>
+<body>
+  <div align="center">
+    <p>欢迎您来到第6关</p>
+    <p>请输入密码进入第7关：
+      <input type="text" id="txt" value="">
+      <input type="button" onClick="check()" value="提交">
+    </p>
+    <p><img alt="请通过以下图片中线索寻找密码" src="img/tupian1.jpg"/></p>
+  </div>
+</body>
+</html>
+3.看源码是没有什么希望了，讲图片下载下来，用文本文件打开，
+查看发现里面没有脚本语言。貌似和密码没有关系。
+
+4.图片分析了1个小时还是没有结果
+
+5.求助百度吧
+
+6.百度提示说是图片里面search的那个关键词。
+
+7.那这个就是给你部分搜索结果猜关键词，考察搜索引擎使用和信息收集能力。
+
+直接将内容在google里面搜索关键字得到如下几个网页的开头是和看到的内容一直的开头。
+
+Get the latest fashion, beauty, dating, and health tips Plus, win freebies, take quizzes, and check your daily horoscope! by sallyyan13 on Indulgy.com.
+Fashion Games_专题
+
+www.rzcucc.com/search/Fashion%20Games-1.html‎
+Get the latest fashion, beauty, dating, and health tips. Plus, win freebies, take quizzes, and check your daily horoscope! Girl Games - 9000+ Free Games for Girls ...
+
+Seventeen - mobile website - Get the latest fashion, beauty ...
+www.mbest.mobi/best-mobile-websites/mobile.../seventeen/‎
+翻译此页
+Get the latest fashion, beauty, dating, and health tips. Plus, win freebies, take quizzes, and check your daily horoscope!
+
+到此我们已经有三个选项啦。
+在搜索关键字“wikipedia published in 1944” 得到的内容看看有没有交集。seventeen就是交集。
+
+4.这个答案和分析有些牵强，我也是搜索以后才获得的思路。不过这个推理不是很严密。
