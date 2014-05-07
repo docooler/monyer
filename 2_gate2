@@ -1,0 +1,56 @@
+http://monyer.com/game/game1/hello.php是我们的地址。
+
+参看源码：
+关键代码如下：
+
+<script type="text/javascript">
+    document.oncontextmenu=function(){return false};
+
+    var a,b,c,d,e,f,g;
+    a = 3.14;
+    b = a * 2;
+    c = a + b;
+    d = c / b + a;
+    e = c - d * b + a;
+    f = e + d /c -b * a;
+    g = f * e - d + c * b + a;
+    a = g * g;
+    a = Math.floor(a);
+
+    function check(){
+        if(document.getElementById("txt").value==a){
+            window.location.href=a + ".php";
+        }else{
+            alert("密码错误");
+            return false;
+        }
+    }
+</script>
+密码是通过计算出来的，我想有的同学此时肯定在计算了吧。
+我是不会干做这个事情的。让浏览器自己算吧。
+到这个网址http://www.w3school.com.cn/tiy/t.asp?f=jseg_text
+ps：w3school是学习互联网编程语言的好地方。
+将代码修改为
+
+    var a,b,c,d,e,f,g;
+    a = 3.14;
+    b = a * 2;
+    c = a + b;
+    d = c / b + a;
+    e = c - d * b + a;
+    f = e + d /c -b * a;
+    g = f * e - d + c * b + a;
+    a = g * g;
+    a = Math.floor(a);
+    docoment.write(a);
+    function check(){
+        if(document.getElementById("txt").value==a){
+            window.location.href=a + ".php";
+        }else{
+            alert("密码错误");
+            return false;
+        }
+    }
+直接将密码打印出来： docoment.write(a);
+结果是424178
+看来我们的第三关的入口地址已经得到了：http://monyer.com/game/game1/424178.php
