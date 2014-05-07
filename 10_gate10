@@ -1,0 +1,228 @@
+1.入口地址：http://monyer.com/game/game1/MonyerLikeYou_the10level.php
+
+2.下载源码：
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>梦之光芒/Monyer——Monyer's Game(第10关)</title>
+<script type="text/javascript">
+    function check(){
+        window.location.href = document.getElementById("txt").value + ".php";
+    }
+</script>
+</head>
+<body>
+<div align="center">
+    <p>欢迎您来到第10关</p>
+    <p>请输入密码进入第11关：
+        <input type="text" id="txt" value="">
+        <input type="button" onClick="check()" value="提交">
+    </p>
+    喔！喔！喔！兄弟，你怎么进来的？</div>
+</body>
+</html>
+
+
+3.分析第一次进入的时候提示是用户名是simpleuser需要admin才能显示下一关入口。
+后来再请求就变成这个啦。估计是服务器做了操作。
+分析源码没有什么可以用的东西，查看请求头：
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "WebInspector",
+      "version": "537.36"
+    },
+    "pages": [
+      {
+        "startedDateTime": "2014-05-07T08:50:20.523Z",
+        "id": "page_24",
+        "title": "http://monyer.com/game/game1/MonyerLikeYou_the10level.php?usr=admin",
+        "pageTimings": {
+          "onContentLoad": 121.00028991699219,
+          "onLoad": 120.00012397766113
+        }
+      }
+    ],
+    "entries": [
+      {
+        "startedDateTime": "2014-05-07T08:50:20.523Z",
+        "time": 68.00007820129395,
+        "request": {
+          "method": "GET",
+          "url": "http://monyer.com/game/game1/MonyerLikeYou_the10level.php?usr=admin",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "Accept-Encoding",
+              "value": "gzip,deflate,sdch"
+            },
+            {
+              "name": "Host",
+              "value": "monyer.com"
+            },
+            {
+              "name": "Accept-Language",
+              "value": "en-US,en;q=0.8,zh-CN;q=0.6"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36"
+            },
+            {
+              "name": "Accept",
+              "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "max-age=0"
+            },
+            {
+              "name": "Cookie",
+              "value": "username=simpleuser; PHPSESSID=t9oap44maddevasr8qh8r8tlh4; __utma=61650736.1568569086.1399447170.1399447170.1399447170.1; __utmc=61650736; __utmz=61650736.1399447170.1.1.utmcsr=hi.baidu.com|utmccn=(referral)|utmcmd=referral|utmcct=/monyer/item/c7527c209f453e8e6f2cc37d"
+            },
+            {
+              "name": "Proxy-Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "queryString": [
+            {
+              "name": "usr",
+              "value": "admin"
+            }
+          ],
+          "cookies": [
+            {
+              "name": "username",
+              "value": "simpleuser",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "PHPSESSID",
+              "value": "t9oap44maddevasr8qh8r8tlh4",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "__utma",
+              "value": "61650736.1568569086.1399447170.1399447170.1399447170.1",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "__utmc",
+              "value": "61650736",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": "__utmz",
+              "value": "61650736.1399447170.1.1.utmcsr=hi.baidu.com|utmccn=(referral)|utmcmd=referral|utmcct=/monyer/item/c7527c209f453e8e6f2cc37d",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": 724,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "Pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "Date",
+              "value": "Wed, 07 May 2014 08:50:46 GMT"
+            },
+            {
+              "name": "Content-Encoding",
+              "value": "gzip"
+            },
+            {
+              "name": "Vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "name": "Server",
+              "value": "nginx/1.0.15"
+            },
+            {
+              "name": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "name": "Content-Type",
+              "value": "text/html"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0"
+            },
+            {
+              "name": "Proxy-Connection",
+              "value": "Keep-Alive"
+            },
+            {
+              "name": "Connection",
+              "value": "Keep-Alive"
+            },
+            {
+              "name": "Expires",
+              "value": "Thu, 19 Nov 1981 08:52:00 GMT"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 686,
+            "mimeType": "text/html",
+            "compression": 157
+          },
+          "redirectURL": "",
+          "headersSize": 369,
+          "bodySize": 529
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 1.0000000002037268,
+          "dns": -1,
+          "connect": -1,
+          "send": 0,
+          "wait": 65.99999999889405,
+          "receive": 1.000078202196164,
+          "ssl": -1
+        },
+        "connection": "104753",
+        "pageref": "page_24"
+      }
+    ]
+  }
+}
+========================华丽的分割线==========================
+  "cookies": [
+            {
+              "name": "username",
+              "value": "simpleuser",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+看来我们只要修改用户名为admin就能达到目的啦。
+a.如何修改cookie呢？
+我是用的是chrome浏览器。安装插件edit a cookie
+安装成功。参考资料：http://www.editthiscookie.com/start/
+添加username选项value设置为admin。再请求这个页面就会得到如下内容：
+好聪明哦！下一关密码为：doyouknow
+看来我们又得到下一关的通关密码啦：doyouknow.php
