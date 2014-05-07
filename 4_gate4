@@ -53,4 +53,51 @@
 </html>
 
 
-4.
+4.代码跳转是为什么呢？我没有仔细研究过，后面补充。我看肯定是和第三有关的地址的地方。所以去掉了
+   <meta http-equiv="refresh" content="0;url=424178.php">这里的意思就是马上有跳转回第三关。直接去掉这行，或者
+   把content改为一个超级大的数值。参考链接：http://www.360doc.com/content/10/1124/09/2703996_71931633.shtml
+   
+
+来分析下关键的代码。
+         eval(
+            function(p,a,c,k,e,d)
+            {
+                e=function(c){return c.toString(36)};
+                if(!''.replace(/^/,String))
+                {
+                    while(c--)
+                        d[c.toString(a)]=k[c]||c.toString(a);
+                    k=[function(e){return d[e]}];
+                    e=function(){return'\\w+'};
+                    c=1
+                };
+                while(c--)
+                    if(k[c])
+                        p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);
+                return p
+            }('a="e";d c(){b(9.8(\'7\').6==a){5.4.3=a+".2"}1{0("密码错误")}}',
+               15,
+               15,
+               'alert|else|php|href|location|window|value|txt|getElementById|document||if|check|function|3bhe'.split('|'),
+               0,
+               {})
+        )
+这里明显就是把js代码混淆啦。可是要怎么才能得到原来的代码是 什么呢？大概看了下return p就是返回来正在的js代码。
+那我们在这个地方打个断点不久好了。断点以后查看变量p的内容还是：
+"a="3bhe";function check(){if(document.getElementById('txt').value==a){window.location.href=a+".php"}else{alert("密码错误")}}"
+从这里可以看出来第五个的入口地址是。3bhe.php.
+
+好了直接进入第五关。可是提示没有这个地址。密码输入3bhe也不对！我们还要一段js没有分析：
+<script type="text/javascript">
+    eval("\141\75\141\56\164\157\125\160\160\145\162\103\141\163\145\50\51\53\61\73");
+</script>
+a.直接输入3bhe提示密码错误，那么我们把上面这段代码去掉，再试试看。点击没有提示密码错误，可是跳转以后提示页面不存在。
+看来还是要解密这段代码。
+b.如何解密这段代码？
+http://www.jb51.net/tools/eval/这个网站提供在线eval加密解密。
+直接输入以后就可以得到相关内容。所以上面查看混淆出的代码，也可以用这里来做解密。
+ eval("\141\75\141\56\164\157\125\160\160\145\162\103\141\163\145\50\51\53\61\73");
+ 的内容是a = a.toUpperCase() + 1;
+ 所以通过上面的计算a=3BHE1。下一关的通过密码我们应该拿到了：
+ 3BHE1.php
+
