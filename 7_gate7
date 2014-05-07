@@ -1,0 +1,48 @@
+1.第七关的入口是：http://monyer.com/game/game1/seventeen7.php
+
+2.下载源码：
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>梦之光芒/Monyer——Monyer's Game(第7关)</title>
+<script type="text/javascript">
+  function check(){
+	  	window.location.href=document.getElementById('txt').value + ".php";
+	}
+</script>
+</head>
+<body>
+  <div align="center">
+    <p>欢迎您来到第7关</p>
+    <p>请输入密码进入第8关：
+      <input type="text" id="txt" value="">
+      <input type="button" onClick="check()" value="提交">
+    </p>
+    <p>提示1：这关需要简单的社会工程学，请联想本关特点进入下一关。</p>
+    <p>提示2：不要被你的所见、经验及习惯蒙蔽了你的双眼，看不到的正是你想要的。</p>
+    <p>提示3：与社会工程学相仿的是暴力破解，所以Monyer给你MD5：5e023995fb3f5e840ee684784f8f0799（小于10的数字+字母）</p>
+  </div>
+</body>
+</html>
+
+3.分析看来这个没有什么好说的啦。md5暴力破解。
+
+4.那么就只能google MD5破解网站。找了好几个都是说已经解出来了，可是需要给钱。
+这个是什么情况呀！！！！居然要给钱太不厚道了，找了好久在http://www.md5.com.cn/发现可以使用
+免费的。直接输入md5后得到结果：eighteen8
+
+5.输入后得到内容：
+Not Found
+
+The requested URL /eighteen8.php was not found on this server.
+
+Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.
+
+开始的时候我还以为出错了，可是回想下这个不是nginx的出错页面呀。乱输入一个地址http://monyer.com/game/game1/sdfsf.php
+查看，得到的内容应该是：
+404 Not Found
+
+nginx/1.0.15
+这才是真正的没有找到。查看源码发现我们已经进入第八关啦。
