@@ -1,0 +1,38 @@
+上一节讲到我们知道第一个的地址是
+http://monyer.com/game/game1/first.php
+
+到了这里还是没有什么内容，
+还是看源码吧。
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>梦之光芒/Monyer——Monyer's Game(第1关)</title>
+</head>
+<body>
+<script type="text/javascript">
+    function check(){
+        if(document.getElementById('txt').value=="  "){
+            window.location.href="hello.php";
+        }else{
+            alert("密码错误");
+        }
+    }
+</script>
+<div align="center">
+    <p>欢迎您来到第1关</p>
+    <p>请输入密码进入第2关：
+        <input type="text" id="txt" value="">
+        <input type="button" onClick="check()" value="提交">
+    </p>
+</div>
+</body>
+</html>
+
+这个就很简单了，密码是两个空格。要是有人问我你怎么知道是两个空格。
+ if(document.getElementById('txt').value=="  ")
+ 这个行代码就是密码判断的地方。可是我们也不用输入密码啦，从下面一行看到第二关的地址应该是
+ http://monyer.com/game/game1/hello.php
+ 直接输入相关链接进入第二关吧。
