@@ -1,0 +1,181 @@
+1.第五个的入口是http://monyer.com/game/game1/3BHE1.php
+
+2.下载源码。
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>梦之光芒/Monyer——Monyer's Game(the 5 level)</title>
+<script type="text/javascript">
+    function check(){
+        window.location.href = document.getElementById("txt").value + ".php";
+    }
+</script>
+</head>
+<body>
+<div align="center">
+    <p>欢迎您来到第5关</p>
+    <p>请输入密码进入第6关：
+        <input type="text" id="txt" value="">
+        <input type="button" onClick="check()" value="提交">
+    </p>
+    <p>密码在哪儿？额，我藏在页面里了哦！</p>
+</div>
+</body>
+</html>
+
+3.分析：
+从页面来看没有什么有用的信息啦。
+能看的地方都看过了，看来没有思路了。可是不要忘记浏览器的同学是http协议的。我们还没有看过http协议的相关信息。
+就是http头，获取http头的相关信息如下：获取头信息的时候要查看所有字段，不要只看标准的。
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "WebInspector",
+      "version": "537.36"
+    },
+    "pages": [
+      {
+        "startedDateTime": "2014-05-07T06:59:53.660Z",
+        "id": "page_1",
+        "title": "http://monyer.com/game/game1/3BHE1.php",
+        "pageTimings": {
+          "onContentLoad": 202.00014114379883,
+          "onLoad": 202.00014114379883
+        }
+      }
+    ],
+    "entries": [
+      {
+        "startedDateTime": "2014-05-07T06:59:53.660Z",
+        "time": 138.0000114440918,
+        "request": {
+          "method": "GET",
+          "url": "http://monyer.com/game/game1/3BHE1.php",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "Accept-Encoding",
+              "value": "gzip,deflate,sdch"
+            },
+            {
+              "name": "Host",
+              "value": "monyer.com"
+            },
+            {
+              "name": "Accept-Language",
+              "value": "en-US,en;q=0.8,zh-CN;q=0.6"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36"
+            },
+            {
+              "name": "Accept",
+              "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "max-age=0"
+            },
+            {
+              "name": "Cookie",
+              "value": "PHPSESSID=t9oap44maddevasr8qh8r8tlh4"
+            },
+            {
+              "name": "Proxy-Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "queryString": [],
+          "cookies": [
+            {
+              "name": "PHPSESSID",
+              "value": "t9oap44maddevasr8qh8r8tlh4",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": 463,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "Date",
+              "value": "Wed, 07 May 2014 07:00:19 GMT"
+            },
+            {
+              "name": "Content-Encoding",
+              "value": "gzip"
+            },
+            {
+              "name": "Vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "name": "Server",
+              "value": "nginx/1.0.15"
+            },
+            {
+              "name": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "name": "monyer",
+              "value": "the password for the next level is asdf"
+            },
+            {
+              "name": "Content-Type",
+              "value": "text/html"
+            },
+            {
+              "name": "Proxy-Connection",
+              "value": "Keep-Alive"
+            },
+            {
+              "name": "Connection",
+              "value": "Keep-Alive"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 673,
+            "mimeType": "text/html",
+            "compression": 156
+          },
+          "redirectURL": "",
+          "headersSize": 281,
+          "bodySize": 517
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 3.0000000006111804,
+          "dns": -1,
+          "connect": 1.0000000002037268,
+          "send": 1.0000000002037268,
+          "wait": 132.0000000014261,
+          "receive": 1.0000114416470751,
+          "ssl": -1
+        },
+        "connection": "73230",
+        "pageref": "page_1"
+      }
+    ]
+  }
+}
+======================================================华丽的风格线=====================================================
+ {
+              "name": "monyer",
+              "value": "the password for the next level is asdf
+ },
+ 看来我们已经得到密码了。
+ asdf.php
+ 
+          
