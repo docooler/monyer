@@ -32,3 +32,30 @@
 </body>
 </html>
 看来已经有人游戏设计者还是比较有意思的同学。准备写个python来计算吧。
+#  -*-  coding: utf-8  -*-
+def prime(n):
+    lis = {}
+    sum = 0
+    for i in xrange(2,n+1):     
+        if not i in lis:
+            lis[i] = 1
+            k = i*2
+            while k <= n:
+                lis[k] = 0
+                k = k+i
+    ans = []    
+    for i in lis:
+        if lis[i] == 1:
+            sum += i
+    return sum
+
+def main():
+    n = prime(10000)
+    print n
+              
+if __name__ == "__main__":
+    main()
+    
+这里计算素数的方法是使用的筛选法。具体代码算法常见：http://www.cnblogs.com/liga/archive/2012/08/31/2665811.html
+执行上面的代码可到结果：5736396
+看来我们已经拿到第9关的入场券啦：5736396.php
