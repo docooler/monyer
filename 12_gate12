@@ -250,22 +250,6 @@ class SubmitForm(object):
         super(SubmitForm, self).__init__()
         self.url = url
 
-    def post(self, url, data):
-        headers = {
-              "User-Agent" : " Mozilla/4.0 my test",
-              "Accept": "*/*",
-              "Host": "monyer.com",
-              "Content-Type"  : "application/x-www-form-urlencoded",
-              "Content-Length": str(len(data)) ,
-              "Pragma" : "no-cache",
-              "Connection": "keep-alive"
-        }
-
-        request = urllib2.Request(url, data)
-        for key in headers:
-            request.add_header(key, headers[key])
-        response = urllib2.urlopen(request)
-        return response.read()
     def get(self):
         return self.__get(self.url)
 
