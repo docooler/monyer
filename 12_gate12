@@ -223,4 +223,74 @@ god 写了半天脚本去猜，最后发现是怎么个东西。
 
 ==============================怎么还有雷===========================================================
 
+为什么会产生盗链？
+
+一般浏览有一个重要的现象就是一个完整的页面并不是一次全部传送到客户端的。如果请求的是一个带有许多图片和其它信息的页面，
+那么最先的一个Http请求被传送回来的是这个页面的文本，然后通过客户端的浏览器对这段文本的解释执行，发现其中还有图片，
+那么客户端的浏览器会再发送一条Http请求，当这个请求被处理后那么这个图片文件会被传送到客户端，然后浏览器会将图片安放
+到页面的正确位置，就这样一个完整的页面也许要经过发送多条Http请求才能够被完整的显示。基于这样的机制，就会产生一个问题，
+那就是盗链问题：就是一个网站中如果没有起页面中所说的信息，例如图片信息，那么它完全可以将这个图片的连接到别的网站。
+这样没有任何资源的网站利用了别的网站的资源来展示给浏览者，提高了自己的访问量，而大部分浏览者又不会很容易地发现，
+这样显然，对于那个被利用了资源的网站是不公平的。一些不良网站为了不增加成本而扩充自己站点内容，经常盗用其他网站的链接。
+一方面损害了原网站的合法利益，另一方面又加重了服务器的负担。
+这个是百度的解释。见http://baike.baidu.com/view/273013.htm。
+这么一看就容易了。那我们造一个referer就能搞定啦。不知道chrome怎么修改请求头，支行脚本搞定。
+
+#  -*-  coding: utf-8  -*-
+import time
+from random import Random
+import urllib2
+import urllib
+import re
+
+
+class SubmitForm(object):
+    """docstring for SubmitForm"""
+    def __init__(self, url):
+        super(SubmitForm, self).__init__()
+        self.url = url
+
+    def post(self, url, data):
+        headers = {
+              "User-Agent" : " Mozilla/4.0 my test",
+              "Accept": "*/*",
+              "Host": "monyer.com",
+              "Content-Type"  : "application/x-www-form-urlencoded",
+              "Content-Length": str(len(data)) ,
+              "Pragma" : "no-cache",
+              "Connection": "keep-alive"
+        }
+
+        request = urllib2.Request(url, data)
+        for key in headers:
+            request.add_header(key, headers[key])
+        response = urllib2.urlopen(request)
+        return response.read()
+    def get(self):
+        return self.__get(self.url)
+
+    def __get(self, url):
+        headers = {
+              "User-Agent" : " Mozilla/4.0 my test",
+              "Accept": "*/*",
+              "Host": "monyer.com",
+              "Referer" : "http://monyer.com/game/game1/smartboy.php",
+              "Pragma" : "no-cache",
+              "Connection": "keep-alive"
+        }
+
+        request = urllib2.Request(url)
+        for key in headers:
+            request.add_header(key, headers[key])
+        response = urllib2.urlopen(request)
+        return response.read()
+        
+
+if __name__ == "__main__":
+    channel = SubmitForm("http://monyer.com/game/game1/sobeautiful.php")
+
+    print channel.get()
+================================================================================
+第13关的页面成功被下载下来啦。就是在get 方法里面添加了一个请求头。"Referer" : "http://monyer.com/game/game1/smartboy.php",
+
 
