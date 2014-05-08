@@ -84,4 +84,105 @@ JTU0
 JTYz
 JTc3
 很有规律的样子.把上面的字符串提取出来都提交一遍都不成功。
+把上面的内容更存储到passwd.txt
 提交脚本：
+#  -*-  coding: utf-8  -*-
+import time
+import random
+import urllib2
+import urllib
+import re
+
+text = ""
+
+class SubmitForm(object):
+    """docstring for SubmitForm"""
+    def __init__(self, url):
+        super(SubmitForm, self).__init__()
+        self.url = url
+
+    def post(self, url, data):
+        headers = {
+              "User-Agent" : " Mozilla/4.0 my test",
+              "Accept": "*/*",
+              "Host": "monyer.com",
+              "Content-Type"  : "application/x-www-form-urlencoded",
+              "Content-Length": str(len(data)) ,
+              "Pragma" : "no-cache",
+              "Connection": "keep-alive"
+        }
+
+        request = urllib2.Request(url, data)
+        for key in headers:
+            request.add_header(key, headers[key])
+        response = urllib2.urlopen(request)
+        return response.read()
+
+    def receive(self, response, passwd):
+        print response
+
+    def pack_form_data(self, passwd):
+        values = {
+        'pwd' : passwd,
+        }
+        data = urllib.urlencode(values)
+        return data
+
+    def send_pwd(self , passwd):
+        data = self.pack_form_data(passwd)
+        return self.post(self.url, data)
+
+class GuessPass(object):
+    """docstring for GuessPass"""
+    def __init__(self, filename):
+        super (GuessPass, self).__init__()
+        self.filename = filename
+        self.triedpass = "triedpass.txt"
+        self.channel = SubmitForm("http://monyer.com/game/game1/smartboy.php?")
+        self.tried = {}
+    def guess_way1(self):
+        fdread = open(self.filename, 'r')
+        filelist = fdread.readlines()
+        passlist = []
+        for line in filelist:
+            passwd =  line.strip('\r\n')
+            passlist.append(passwd)
+        self.try_pass(passlist)
+        for key in self.tried.keys():
+            print key + " : " + str(self.tried[key])
+
+    def juge_pass(self, response):
+        key = u'<p>欢迎您来到第12关</p>'.encode('utf-8')
+        match = re.findall(key, response)
+        for line in match:
+            print line.decode('utf-8')
+        if len(match):
+            return 0
+        return 1
+
+    def try_pass(self, passlist):
+        print "try_pass"
+        for passwd in passlist:
+            if self.tried.has_key(passwd):
+                self.tried[passwd] = self.tried[passwd] +1
+                continue
+            response = self.channel.send_pwd(passwd)
+            ret = self.juge_pass(response)
+            if ret ==1:
+                print "passwd find :" + passwd;
+                return 1
+            time.sleep(0.5)
+            self.tried[passwd] = 1
+        return 0
+
+        
+
+if __name__ == "__main__":
+    # channel = SubmitForm("http://monyer.com/game/game1/smartboy.php?")
+    # print channel.send_pwd("JTRB")
+    gs = GuessPass('passwd.txt')
+    gs.guess_way1()
+
+策略一的做法没有找到密码。看来要继续分析这些字符。
+
+
