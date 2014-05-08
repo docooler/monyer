@@ -1,0 +1,26 @@
+1.第14关的入口地址是：http://monyer.com/game/game1/whatyouneverknow.php
+
+2.下载源码分析：
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>梦之光芒/Monyer——Monyer's Game(第14关)</title>
+<script type="text/javascript">
+    function check(){
+        window.location.href = document.getElementById("txt").value + ".php";
+    }
+</script>
+</head>
+<body>
+<div align="center">
+    <p>欢迎您来到第14关</p>
+    <p>请输入密码进入第15关：
+        <input type="text" id="txt" value="">
+        <input type="button" onClick="check()" value="提交">
+    </p>
+    <p>通往第15关的桥是一个非常简单的Crackme程序：<a href="img/crackme.exe">Crackme</a></p>
+</div>
+</body>
+</html>
