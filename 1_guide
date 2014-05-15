@@ -1,12 +1,14 @@
-1.登陆到http://monyer.com/game/game1/
+#1.登陆到http://monyer.com/game/game1/#
 
 显示内容有：请点击链接进入第1关： 连接在左边→ ←连接在右边
 可是没有地方可以点击。
 查看源码吧。
 
+```
 <span>连接在左边→</span>
 <a href="first.php"></a>
 <span>←连接在右边</span>
+```
 
 
 看到了吧！first.php就是我们要访问的地址。
