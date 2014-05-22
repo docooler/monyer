@@ -1,3 +1,4 @@
+```C++
 #include <iostream>
 using namespace std;
 class ZeroObj
@@ -37,3 +38,4 @@ int  main(int argc, char const *argv[])
     test2();
     return 0;
 }
+```
