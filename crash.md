@@ -10,13 +10,11 @@ public:
     {
         cout<<"hello this say_hello"<<endl;
     }
-
     void say_my_secret(int id)
     {
         m_id = id;
         cout <<"my secret id is  "<<m_id<<endl;
     }
-
 private:
     int m_id;
 };
